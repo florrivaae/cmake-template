@@ -1,26 +1,27 @@
 # Description
 
-Template project with basic structure and CMake presets (defined in CMakePresetsjson) for following compilers:
+Template project with basic structure and CMake presets (defined in CMakePresets.json) for following compilers:
 
 ### 1. Windows:
    * **MSVC** from Visual Studio 2022 (v17.x) <- write exact version
    * **GCC** from MinGW package
    * **Clang** with MSVC backend (using MSVC standard lib)
 ### 2. Linux:
-   * GCC - NOT TESTED!!!
-   * Clang - TODO
+   * **GCC** - NOT TESTED!!!
+   * **Clang** - TODO
 ### 3. Mac:
-   * Clang - NOT TESTED!!!
+   * **Clang** - NOT TESTED!!!
 
 # Requirements
 
 ### 1. Windows requirements:
 
 * **CMake 3.20+** (https://cmake.org/download/)
-* **IDE (partly optional, but recommended):**
-  *  VSCode with C/C++ Extension Pack OR
-  *  Visual Studio
+* One of these **IDEs (partly optional, but recommended):**
+  *  VSCode with C/C++ Extension Pack
+  *  Visual Studio 2022
 * **Compiler-Specific Requirements:**
+
 | Compiler                 | Requirements                                                                                                                                                                                       |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **MSVC**                 | Visual Studio 2022 with "Desktop Development with C++" workload<br>MSVC v143 toolset                                                                                                               |
@@ -33,7 +34,7 @@ Builds were run only on Fedora 40.
 
 * **CMake 3.20+** ```sudo dnf install cmake```
 * **build-essentials** ```sudo dnf install gcc gcc-c++ make ninja-build```
-* **VSCode with C/C++ Extension Pack** to build/launch the project without problems
+* **VSCode with C/C++ Extension Pack**
 
 ### 3. Mac requirements:
 
@@ -47,15 +48,15 @@ Builds were run only on Fedora 40.
 
 #### Using VSCode:
 
-1) Open VSCode with C/C++ Extension Pack installed
+1) Open **VSCode with C/C++ Extension Pack** installed
 
-2) Run "CMake: Select Configure Preset" from command palette
+2) Run **"CMake: Select Configure Preset"** from command palette
 
 3) Choose desired preset (e.g., msvc-x64-debug)
 
-4) Build with "CMake: Build" command or "Tasks:Run Build Task" command using configs in .vscode/tasks.json
+4) Build with **"CMake: Build"** command or **"Tasks:Run Build Task"** command (based on configs in .vscode/tasks.json)
 
-5) Debug in Run and Debug panel using configs in .vscode/launch.json
+5) Debug in **Run and Debug panel** (based on configs in .vscode/launch.json)
 
 When debugging in VSCode, be sure to **explicitly select configure preset** via "CMake: Select Configure Preset" VSCode command before using launch commands!
 
@@ -71,7 +72,7 @@ When debugging in VSCode, be sure to **explicitly select configure preset** via 
 
 #### Using Command Line
 
-```
+```bat
 :: configure and generate folders (similar to CMake: Select Configure Preset or CMake: Configure commands in VSCode)
 cmake --preset <preset_name>
 
@@ -82,9 +83,9 @@ cmake --build --preset <preset_name>
 ./build/<preset_name>/cmake_template/cmake_template.exe
 ```
 
-**For MSVC presets**, use wrapper scripts to set up environment:
+**For MSVC presets**, use wrapper scripts that set up environment before calling CMake:
 
-```
+```bat
 :: configure
 ./cmake_wrapper_x64.bat --preset msvc-x64-debug
 
@@ -97,7 +98,7 @@ cmake --build --preset <preset_name>
 
 ### 2. Linux
 
-```
+```sh
 # configure
 cmake --preset <preset_name>
 
@@ -110,7 +111,7 @@ cmake --build --preset <preset_name>
 
 ### 3. Mac
 
-```
+```sh
 # Configure
 cmake --preset <preset_name>
 
