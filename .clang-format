@@ -1,0 +1,49 @@
+# For this configuration to work, PATH to clang-format.exe
+# executable should be specified for your IDE.
+
+BasedOnStyle: Google
+
+IndentWidth: 2       # Use 2 spaces per indentation level
+UseTab: Never        # Never use tabs, only spaces
+
+# Maximum line length before wrapping
+ColumnLimit: 80
+
+# Alignment options
+AlignConsecutiveBitFields: true
+
+# Function declaration formatting
+AllowAllParametersOfDeclarationOnNextLine: false  # Force all function parameters on separate lines
+
+# Constructor initialization formatting
+BreakConstructorInitializers: AfterColon  # Break constructor initializers after the colon
+ConstructorInitializerAllOnOneLineOrOnePerLine: true  # Force one-per-line initializer lists
+ConstructorInitializerIndentWidth: 2  # Indent for constructor initializer lists
+
+# Brace wrapping configuration
+BreakBeforeBraces: Custom  # Use custom brace wrapping rules below
+BraceWrapping:
+  AfterEnum: true          # Place enums on new line after '{'
+  AfterStruct: true        # Place structs on new line after '{'
+  AfterClass: true         # Place classes on new line after '{'
+  SplitEmptyFunction: false  # Don't split empty function bodies
+  AfterControlStatement: true  # Wrap braces after control statements (if, for, etc.)
+  AfterNamespace: true     # Place namespaces on new line after '{'
+  AfterFunction: true      # Place functions on new line after '{'
+  AfterUnion: true         # Place unions on new line after '{'
+  AfterExternBlock: true   # Place extern blocks on new line after '{'
+  BeforeCatch: true        # Place 'catch' on new line before '{'
+  BeforeElse: true         # Place 'else' on new line before '{'
+  SplitEmptyRecord: true   # Split empty records (structs/classes)
+  SplitEmptyNamespace: true  # Split empty namespaces
+
+# Parameter packing rules
+BinPackParameters: false  # Don't pack parameters, keep one per line
+BinPackArguments: false   # Don't pack function call arguments, keep one per line
+
+# Penalty scores for breaking formatting
+PenaltyBreakBeforeFirstCallParameter: 1000  # High penalty for breaking before first parameter
+PenaltyBreakOpenParenthesis: 1000           # High penalty for breaking after '('
+
+# Class member access modifiers
+AccessModifierOffset: -2  # Indent access modifiers (-2 means outdent by 2 spaces)

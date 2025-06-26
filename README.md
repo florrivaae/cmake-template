@@ -3,7 +3,7 @@
 Template project with basic structure and CMake presets (defined in CMakePresets.json) for following compilers:
 
 ### 1. Windows:
-   * **MSVC** from Visual Studio 2022 (v17.x) <- write exact version
+   * **MSVC** from Visual Studio 2022 (v17.x)
    * **GCC** from MinGW package
    * **Clang** with MSVC backend (using MSVC standard lib)
 ### 2. Linux:
@@ -129,7 +129,7 @@ cmake --build --preset <preset_name>
 ├── .vscode/               # VSCode configuration
 │   ├── launch.json        # Startup configurations
 │   ├── tasks.json         # Configure&Build tasks
-│   └── settings.json      # Formatting settings
+│   └── settings.json      # VSCode project settings
 ├── apps/                  # Entrypoint source files
 │   └── CMakeLists.txt     # CMake configuration for entrypoints
 ├── build/                 # Build artifacts (gitignored)
@@ -146,9 +146,10 @@ cmake --build --preset <preset_name>
 │   └── CMakeLists.txt     # CMake configuration for all libs
 ├── tests/                 # Unit tests
 │   └── CMakeLists.txt     # CMake configuration for unit-tests
-├── CMakeLists.txt         # Main CMake configuration
-├── CMakePresets.json      # Build presets
+├── .clang-format          # Formatting settings
 ├── cmake_wrapper_x64.bat  # Windows MSVC environment wrapper
 ├── cmake_wrapper_x86.bat  # Windows MSVC environment wrapper
+├── CMakeLists.txt         # Main CMake configuration
+├── CMakePresets.json      # Build presets
 └── README.md              # This documentation
 ```

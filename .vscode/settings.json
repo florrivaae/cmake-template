@@ -6,7 +6,6 @@
     "cmake"
   ],
   "C_Cpp.clang_format_sortIncludes": true,
-  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 2, UseTab: Never, ColumnLimit: 80,  AlignConsecutiveBitFields: true, AllowAllParametersOfDeclarationOnNextLine: false, BreakConstructorInitializers: AfterColon, ConstructorInitializerAllOnOneLineOrOnePerLine: true, BreakBeforeBraces: Custom, ConstructorInitializerIndentWidth: 2, PenaltyBreakBeforeFirstCallParameter: 1000, BinPackParameters: false, BraceWrapping: {AfterEnum: true, AfterStruct: true, AfterClass: true, SplitEmptyFunction: false, AfterControlStatement: true, AfterNamespace: true, AfterFunction: true, AfterUnion: true, AfterExternBlock: true, BeforeCatch: true, BeforeElse: true, SplitEmptyRecord: true, SplitEmptyNamespace: true}, BinPackArguments: false, PenaltyBreakOpenParenthesis: 1000, AccessModifierOffset: -2 }",
   "editor.formatOnSave": true,
   "C_Cpp.default.cppStandard": "c++17",
   "C_Cpp.default.cStandard": "c17",
