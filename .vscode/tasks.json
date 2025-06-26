@@ -1,0 +1,207 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+
+    {
+      "label": "Configure: MSVC x64 Release",
+      "type": "shell",
+      "command": "./cmake_wrapper_x64.bat --preset msvc-x64-release",
+      "problemMatcher": "$msCompile",
+    },
+    {
+      "label": "Configure: MSVC x64 Debug",
+      "type": "shell",
+      "command": "./cmake_wrapper_x64.bat --preset msvc-x64-debug",
+      "problemMatcher": "$msCompile",
+    },
+    {
+      "label": "Configure: MSVC x86 Release",
+      "type": "shell",
+      "command": "./cmake_wrapper_x86.bat --preset msvc-x86-release",
+      "problemMatcher": "$msCompile",
+    },
+    {
+      "label": "Configure: MSVC x86 Debug",
+      "type": "shell",
+      "command": "./cmake_wrapper_x86.bat --preset msvc-x86-debug",
+      "problemMatcher": "$msCompile",
+    },
+    
+
+    {
+      "label": "Configure: MinGW GCC x64 Release",
+      "type": "shell",
+      "command": "cmake --preset mingwgcc-x64-release",
+      "problemMatcher": "$gcc",
+    },
+    {
+      "label": "Configure: MinGW GCC x64 Debug",
+      "type": "shell",
+      "command": "cmake --preset mingwgcc-x64-debug",
+      "problemMatcher": "$gcc",
+    },
+    {
+      "label": "Configure: MinGW GCC x86 Release",
+      "type": "shell",
+      "command": "cmake --preset mingwgcc-x86-release",
+      "problemMatcher": "$gcc",
+    },
+    {
+      "label": "Configure: MinGW GCC x86 Debug",
+      "type": "shell",
+      "command": "cmake --preset mingwgcc-x86-debug",
+      "problemMatcher": "$gcc",
+    },
+
+
+    {
+      "label": "Configure: Clang x64 Release",
+      "type": "shell",
+      "command": "cmake --preset clang-x64-release",
+      "problemMatcher": "$msCompile",
+    },
+    {
+      "label": "Configure: Clang x64 Debug",
+      "type": "shell",
+      "command": "cmake --preset clang-x64-debug",
+      "problemMatcher": "$msCompile",
+    },
+
+
+    {
+      "label": "Configure: GCC Release",
+      "type": "shell",
+      "command": "cmake --preset gcc-release",
+      "problemMatcher": "$gcc",
+    },
+    {
+      "label": "Configure: GCC Debug",
+      "type": "shell",
+      "command": "cmake --preset gcc-debug",
+      "problemMatcher": "$gcc",
+    },
+
+
+    {
+      "label": "Build: MSVC x64 Release",
+      "type": "shell",
+      "group": "build",
+      "command": "./cmake_wrapper_x64.bat --build --preset msvc-x64-release",
+      "problemMatcher": "$msCompile",
+      "dependsOn":[
+        "Configure: MSVC x64 Release"
+      ]
+    },
+    {
+      "label": "Build: MSVC x64 Debug",
+      "type": "shell",
+      "group": "build",
+      "command": "./cmake_wrapper_x64.bat --build --preset msvc-x64-debug",
+      "problemMatcher": "$msCompile",
+      "dependsOn":[
+        "Configure: MSVC x64 Debug"
+      ]
+    },
+    {
+      "label": "Build: MSVC x86 Release",
+      "type": "shell",
+      "group": "build",
+      "command": "./cmake_wrapper_x86.bat --build --preset msvc-x86-release",
+      "problemMatcher": "$msCompile",
+      "dependsOn":[
+        "Configure: MSVC x86 Release"
+      ]
+    },
+    {
+      "label": "Build: MSVC x86 Debug",
+      "type": "shell",
+      "group": "build",
+      "command": "./cmake_wrapper_x86.bat --build --preset msvc-x86-debug",
+      "problemMatcher": "$msCompile",
+      "dependsOn":[
+        "Configure: MSVC x86 Debug"
+      ]
+    },
+    {
+      "label": "Build: MinGW GCC x64 Release",
+      "type": "shell",
+      "group": "build",
+      "command": "cmake --build --preset mingwgcc-x64-release",
+      "problemMatcher": "$gcc",
+      "dependsOn":[
+        "Configure: MinGW GCC x64 Release"
+      ]
+    },
+    {
+      "label": "Build: MinGW GCC x64 Debug",
+      "type": "shell",
+      "group": "build",
+      "command": "cmake --build --preset mingwgcc-x64-debug",
+      "problemMatcher": "$gcc",
+      "dependsOn":[
+        "Configure: MinGW GCC x64 Debug"
+      ]
+    },
+    {
+      "label": "Build: MinGW GCC x86 Release",
+      "type": "shell",
+      "group": "build",
+      "command": "cmake --build --preset mingwgcc-x86-release",
+      "problemMatcher": "$gcc",
+      "dependsOn":[
+        "Configure: MinGW GCC x86 Release"
+      ]
+    },
+    {
+      "label": "Build: MinGW GCC x86 Debug",
+      "type": "shell",
+      "group": "build",
+      "command": "cmake --build --preset mingwgcc-x86-debug",
+      "problemMatcher": "$gcc",
+      "dependsOn":[
+        "Configure: MinGW GCC x86 Debug"
+      ]
+    },
+    {
+      "label": "Build: Clang x64 Release",
+      "type": "shell",
+      "group": "build",
+      "command": "cmake --build --preset clang-x64-release",
+      "problemMatcher": "$msCompile",
+      "dependsOn":[
+        "Configure: Clang x64 Release"
+      ]
+    },
+    {
+      "label": "Build: Clang x64 Debug",
+      "type": "shell",
+      "group": "build",
+      "command": "cmake --build --preset clang-x64-debug",
+      "problemMatcher": "$msCompile",
+      "dependsOn":[
+        "Configure: Clang x64 Debug"
+      ]
+    },
+    {
+      "label": "Build: GCC Release",
+      "type": "shell",
+      "command": "cmake --build --preset gcc-release",
+      "group": "build",
+      "problemMatcher": "$gcc",
+      "dependsOn":[
+        "Configure: GCC Release"
+      ]
+    },
+    {
+      "label": "Build: GCC Debug",
+      "type": "shell",
+      "command": "cmake --build --preset gcc-debug",
+      "group": "build",
+      "problemMatcher": "$gcc",
+      "dependsOn":[
+        "Configure: GCC Debug"
+      ]
+    }
+  ]
+
+}

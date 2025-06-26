@@ -1,0 +1,262 @@
+﻿{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 8,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "win-msvc-base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_CXX_COMPILER": "cl.exe"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "win-mingwgcc-base",
+            "hidden": true,
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc.exe",
+                "CMAKE_CXX_COMPILER": "g++.exe"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "win-clang-base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang-cl.exe",
+                "CMAKE_CXX_COMPILER": "clang-cl.exe"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "lin-gcc-base",
+            "hidden": true,
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "msvc-x64-debug",
+            "displayName": "MSVC x64 Debug",
+            "inherits": "win-msvc-base",
+            "environment": {
+                "VSCMD_ARG_TGT_ARCH": "x64"
+            },
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "msvc-x64-release",
+            "displayName": "MSVC x64 Release",
+            "inherits": "msvc-x64-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "msvc-x86-debug",
+            "displayName": "MSVC x86 Debug",
+            "inherits": "win-msvc-base",
+            "environment": {
+                "VSCMD_ARG_TGT_ARCH": "x86"
+            },
+            "architecture": {
+                "value": "x86",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "msvc-x86-release",
+            "displayName": "MSVC x86 Release",
+            "inherits": "msvc-x86-debug",
+            "cacheVariables": {
+            "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "mingwgcc-x64-debug",
+            "displayName": "MinGW GCC x64 Debug",
+            "inherits": "win-mingwgcc-base",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "mingwgcc-x64-release",
+            "displayName": "MinGW GCC x64 Release",
+            "inherits": "mingwgcc-x64-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "mingwgcc-x86-debug",
+            "displayName": "MinGW GCC x86 Debug",
+            "inherits": "win-mingwgcc-base",
+            "architecture": {
+                "value": "x86",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "mingwgcc-x86-release",
+            "displayName": "MinGW GCC x86 Release",
+            "inherits": "mingwgcc-x86-debug",
+            "cacheVariables": {
+            "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "clang-x64-debug",
+            "displayName": "Clang x64 Debug",
+            "inherits": "win-clang-base",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_C_FLAGS": "/Z7",
+                "CMAKE_CXX_FLAGS": "/Z7"
+            }
+        },
+        {
+            "name": "clang-x64-release",
+            "displayName": "Clang x64 Release",
+            "inherits": "clang-x64-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_C_FLAGS": "",
+                "CMAKE_CXX_FLAGS": ""
+            }
+        },
+        {
+            "name": "gcc-debug",
+            "displayName": "GCC Debug",
+            "inherits": "lin-gcc-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE":"Debug"
+            }
+        },
+        {
+            "name": "gcc-release",
+            "displayName": "GCC Release",
+            "inherits": "gcc-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE":"Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "msvc-x64-debug",
+            "displayName": "MSVC x64 Debug",
+            "configurePreset": "msvc-x64-debug"
+        },
+        {
+            "name": "msvc-x64-release",
+            "displayName": "MSVC x64 Release",
+            "configurePreset": "msvc-x64-release"
+        },
+        {
+            "name": "msvc-x86-debug",
+            "displayName": "MSVC x86 Debug",
+            "configurePreset": "msvc-x86-debug"
+        },
+        {
+            "name": "msvc-x86-release",
+            "displayName": "MSVC x86 Release",
+            "configurePreset": "msvc-x86-release"
+        },
+        {
+            "name": "mingwgcc-x64-debug",
+            "displayName": "MinGW GCC x64 Debug",
+            "configurePreset": "mingwgcc-x64-debug"
+        },
+        {
+            "name": "mingwgcc-x64-release",
+            "displayName": "MinGW GCC x64 Release",
+            "configurePreset": "mingwgcc-x64-release"
+        },
+        {
+            "name": "mingwgcc-x86-debug",
+            "displayName": "MinGW GCC x86 Debug",
+            "configurePreset": "mingwgcc-x86-debug"
+        },
+        {
+            "name": "mingwgcc-x86-release",
+            "displayName": "MinGW GCC x86 Release",
+            "configurePreset": "mingwgcc-x86-release"
+        },
+        {
+            "name": "clang-x64-debug",
+            "displayName": "Clang x64 Debug",
+            "configurePreset": "clang-x64-debug"
+        },
+        {
+            "name": "clang-x64-release",
+            "displayName": "Clang x64 Release",
+            "configurePreset": "clang-x64-release"
+        },
+        {
+            "name": "gcc-debug",
+            "displayName": "GCC Debug",
+            "configurePreset": "gcc-debug"
+        },
+        {
+            "name": "gcc-release",
+            "displayName": "GCC Release",
+            "configurePreset": "gcc-release"
+        }
+    ]
+}
