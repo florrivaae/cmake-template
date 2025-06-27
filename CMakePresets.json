@@ -20,6 +20,12 @@
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Windows"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "enableClangTidyCodeAnalysis": true,
+                    "enableMicrosoftCodeAnalysis": false
+                }
             }
         },
         {
@@ -113,7 +119,7 @@
             "displayName": "MSVC x86 Release",
             "inherits": "msvc-x86-debug",
             "cacheVariables": {
-            "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_BUILD_TYPE": "Release"
             }
         },
         {
@@ -153,7 +159,7 @@
             "displayName": "MinGW GCC x86 Release",
             "inherits": "mingwgcc-x86-debug",
             "cacheVariables": {
-            "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_BUILD_TYPE": "Release"
             }
         },
         {
@@ -185,7 +191,7 @@
             "displayName": "GCC Debug",
             "inherits": "lin-gcc-base",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE":"Debug"
+                "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
@@ -193,7 +199,7 @@
             "displayName": "GCC Release",
             "inherits": "gcc-debug",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE":"Release"
+                "CMAKE_BUILD_TYPE": "Release"
             }
         }
     ],

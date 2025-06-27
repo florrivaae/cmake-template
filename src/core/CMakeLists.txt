@@ -2,15 +2,15 @@ add_library(core
   "foo.cpp"
 )
 
-set(CORE_PRIVATE_HEADERS 
+set(CORE_PRIVATE_HEADERS
   "include/core/foo.hpp"
 )
-set(CORE_PUBLIC_HEADERS 
+set(CORE_PUBLIC_HEADERS
   "${PROJECT_SOURCE_DIR}/include/core/public_foo.hpp"
 )
 
 # Make these headers visible in Solution Explorer
-target_sources(core 
+target_sources(core
   PRIVATE
     ${CORE_PRIVATE_HEADERS}
   PUBLIC
@@ -32,10 +32,11 @@ source_group("Public Headers" FILES ${CORE_PUBLIC_HEADERS})
 # )
 
 target_include_directories(core
-  PRIVATE 
+  PRIVATE
     "include/"
   PUBLIC
     "${PROJECT_SOURCE_DIR}/include"
 )
 
 set_target_properties(core PROPERTIES FOLDER "Libraries")
+add_compile_commands_copy_target(core)

@@ -14,8 +14,11 @@ project (
   LANGUAGES C CXX
 )
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(NoInSourceBuilds)
+include(CopyCompileCommandsToRoot)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -24,13 +27,13 @@ endif(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 add_definitions(-DRES_PATH="${PROJECT_SOURCE_DIR}/res")
 
 if(MSVC)
- set(CMAKE_CXX_FLAGS_CUSTOM /W4 /WX /permissive- /we6246)
- message("CUSTOM LOG: Setting compiler flags globally for MSVC: ${CMAKE_CXX_FLAGS_CUSTOM}")
+  set(CMAKE_CXX_FLAGS_CUSTOM /W4 /WX /permissive- /we6246)
+  message(STATUS "🟢 Setting compiler flags globally for MSVC: ${CMAKE_CXX_FLAGS_CUSTOM}")
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
- set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
- set(CMAKE_CXX_FLAGS_CUSTOM -Wall -Wextra -Werror -Wpedantic -Wshadow)
- message("CUSTOM LOG: Setting compiler flags globally for GCC/Clang:${CMAKE_CXX_FLAGS_CUSTOM}")
+  set(CMAKE_CXX_FLAGS_CUSTOM -Wall -Wextra -Werror -Wpedantic -Wshadow)
+  message(STATUS "🟢 Setting compiler flags globally for GCC/Clang:${CMAKE_CXX_FLAGS_CUSTOM}")
 endif()
+
 
 # Include sub-projects.
 add_subdirectory(extern)

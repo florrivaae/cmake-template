@@ -34,13 +34,14 @@ Builds were run only on Fedora 40.
 
 * **CMake 3.20+** ```sudo dnf install cmake```
 * **build-essentials** ```sudo dnf install gcc gcc-c++ make ninja-build```
-* **VSCode with C/C++ Extension Pack**
+* **VSCode with C/C++ Extension Pack** (optional but recommended)
 
 ### 3. Mac requirements:
 
 * **CMake 3.20+** ```brew install cmake```
 * **make** ```brew install make```
 * **XCode Command Line Tools** ```xcode-select --install```
+* **VSCode with C/C++ Extension Pack** (optional but recommended)
 
 # How to build and run
 
@@ -64,7 +65,7 @@ When debugging in VSCode, be sure to **explicitly select configure preset** via 
 
 1) Open project folder in Visual Studio
 
-2) Select preset from "Configuration" dropdown
+2) Select preset from "Configuration" dropdown (sometimes you need to manually call "Configure" command after this step)
 
 3) Build using Build menu
 
@@ -80,20 +81,20 @@ cmake --preset <preset_name>
 cmake --build --preset <preset_name>
 
 :: run executable (example)
-./build/<preset_name>/cmake_template/cmake_template.exe
+./build/<preset_name>/bin/app.exe
 ```
 
 **For MSVC presets**, use wrapper scripts that set up environment before calling CMake:
 
 ```bat
 :: configure
-./cmake_wrapper_x64.bat --preset msvc-x64-debug
+./scripts/cmake_wrapper_x64.bat --preset msvc-x64-debug
 
 :: build
-./cmake_wrapper_x64.bat --build --preset msvc-x64-debug
+./scripts/cmake_wrapper_x64.bat --build --preset msvc-x64-debug
 
 :: run executable (example)
-./build/msvc-x64-debug/cmake_template/cmake_template.exe
+./build/msvc-x64-debug/bin/app.exe
 ```
 
 ### 2. Linux
@@ -106,7 +107,7 @@ cmake --preset <preset_name>
 cmake --build --preset <preset_name>
 
 # Run executable (example)
-./build/<preset_name>/cmake_template/cmake_template.exe
+./build/<preset_name>/bin/app
 ```
 
 ### 3. Mac
@@ -119,37 +120,39 @@ cmake --preset <preset_name>
 cmake --build --preset <preset_name>
 
 # Run executable (example)
-./build/<preset_name>/output/app
+./build/<preset_name>/bin/app
 ```
 
 # Project structure
 
 ```
 .
-├── .vscode/               # VSCode configuration
-│   ├── launch.json        # Startup configurations
-│   ├── tasks.json         # Configure&Build tasks
-│   └── settings.json      # VSCode project settings
-├── apps/                  # Entrypoint source files
-│   └── CMakeLists.txt     # CMake configuration for entrypoints
-├── build/                 # Build artifacts (gitignored)
-├── cmake/                 # Custom CMake modules
-├── extern/                # External git submodules
-│   └── CMakeLists.txt     # CMake configuration for all submodules
-├── include/               # Public headers
-│   └── core/              # Public headers for core library
-├── res/                   # Misc resources
-├── src/                   # Source files
-│   ├── core/              # Source files for core library
-│   │   ├── include/       # Private headers for core library
-│   |   └── CMakeLists.txt # CMake configuration for core lib
-│   └── CMakeLists.txt     # CMake configuration for all libs
-├── tests/                 # Unit tests
-│   └── CMakeLists.txt     # CMake configuration for unit-tests
-├── .clang-format          # Formatting settings
-├── cmake_wrapper_x64.bat  # Windows MSVC environment wrapper
-├── cmake_wrapper_x86.bat  # Windows MSVC environment wrapper
-├── CMakeLists.txt         # Main CMake configuration
-├── CMakePresets.json      # Build presets
-└── README.md              # This documentation
+├── .vscode/                    # VSCode configuration
+│   ├── launch.json             # Startup configurations
+│   ├── tasks.json              # Configure&Build tasks
+│   └── settings.json           # VSCode project settings
+├── apps/                       # Entrypoint source files
+│   └── CMakeLists.txt          # CMake configuration for entrypoints
+├── build/                      # Build artifacts (gitignored)
+├── cmake/                      # Custom CMake modules
+├── extern/                     # External git submodules
+│   └── CMakeLists.txt          # CMake configuration for all submodules
+├── include/                    # Public headers
+│   └── core/                   # Public headers for core library
+├── res/                        # Misc resources
+├── scipts/                     # Helper scripts
+│   ├── cmake_wrapper_x64.bat   # Windows MSVC environment wrapper
+│   └── cmake_wrapper_x86.bat   # Windows MSVC environment wrapper
+├── src/                        # Source files
+│   ├── core/                   # Source files for core library
+│   │   ├── include/            # Private headers for core library
+│   |   └── CMakeLists.txt      # CMake configuration for core lib
+│   └── CMakeLists.txt          # CMake configuration for all libs
+├── tests/                      # Unit tests
+│   └── CMakeLists.txt          # CMake configuration for unit-tests
+├── .clang-format               # Formatting settings
+├── .clang-tidy                 # Clang-tidy configuration
+├── CMakeLists.txt              # Main CMake configuration
+├── CMakePresets.json           # Build presets
+└── README.md                   # This documentation
 ```
