@@ -47,3 +47,5 @@ PenaltyBreakOpenParenthesis: 1000           # High penalty for breaking after '(
 
 # Class member access modifiers
 AccessModifierOffset: -2  # Indent access modifiers (-2 means outdent by 2 spaces)
+
+SortIncludes: false

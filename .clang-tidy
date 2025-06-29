@@ -16,7 +16,9 @@ Checks: >
   -hicpp-use-nullptr,
   -readability-identifier-length,
   -readability-magic-numbers,
-  -bugprone-exception-escape
+  -bugprone-exception-escape,
+  -readability-braces-around-statements,
+  -hicpp-braces-around-statements
 
 HeaderFilterRegex: '.*'
 FormatStyle: file  # Respects .clang-format
@@ -27,3 +29,9 @@ CheckOptions:
     value: camelBack
   - key:   readability-identifier-naming.VariableCase
     value: camelBack
+  # static member vars
+  - key:   readability-identifier-naming.ClassMemberCase
+    value: CamelCase
+  # static methods
+  - key:   readability-identifier-naming.ClassMethodCase
+    value: CamelCase
