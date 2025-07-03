@@ -39,4 +39,3 @@ target_include_directories(core
 )
 
 set_target_properties(core PROPERTIES FOLDER "Libraries")
-add_compile_commands_copy_target(core)

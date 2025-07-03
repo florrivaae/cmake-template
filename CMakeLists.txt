@@ -14,11 +14,17 @@ project (
   LANGUAGES C CXX
 )
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
-
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(NoInSourceBuilds)
-include(CopyCompileCommandsToRoot)
+
+# ----------------------------
+# compile_commands.json generation logic:
+# ----------------------------
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)  # generates only with Makefiles
+
+set(ENABLE_COMPILE_COMANDS_COPY_TO_ROOT ON)  # disable if you want to symlink instead
+set(ENABLE_FORMATTING_WORKAROUND_WIN ON)     # workaround for clangd issue!!!
+include(CopyCompileCommandsToRoot)           # function for copying is defined in this module
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -26,6 +32,9 @@ endif(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
 add_definitions(-DRES_PATH="${PROJECT_SOURCE_DIR}/res")
 
+# ----------------------------
+# Compile flags:
+# ----------------------------
 if(MSVC)
   set(CMAKE_CXX_FLAGS_CUSTOM /W4 /WX /permissive- /we6246)
   message(STATUS "🟢 Setting compiler flags globally for MSVC: ${CMAKE_CXX_FLAGS_CUSTOM}")
