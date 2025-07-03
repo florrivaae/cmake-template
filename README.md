@@ -123,7 +123,9 @@ cmake --build --preset <preset_name>
 ./build/<preset_name>/bin/app
 ```
 
-# Project structure
+# Misc
+
+### Project's structure
 
 ```
 .
@@ -156,3 +158,14 @@ cmake --build --preset <preset_name>
 ├── CMakePresets.json           # Build presets
 └── README.md                   # This documentation
 ```
+
+### Linter
+
+For clangd linting and LSP capabilities install clangd executable
+(it should go in bundle with [LLVM 20.1.0](https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.0/LLVM-20.1.0-win64.exe))
+
+VSCode needs separate extesion to show errors from clangd: https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd
+
+### Tests
+
+Run tests with ```ctest``` from ```build/<preset_name>/tests``` directory.
